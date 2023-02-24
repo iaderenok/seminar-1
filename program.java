@@ -1,33 +1,25 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-
+import java.util.Arrays;
+/**
+ * program
+ */
+ 
 public class program {
     public static void main(String[] args) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("surname","Ivanov");
-        map.put("name","Ivan");
-        map.put("country","Russia");
-        map.put("city","Moscow");
-        map.put("age",null);
-        map.put("phone","384613");
-        System.out.println(getQuery(map));
-    }
-
-    public static String getQuery(Map<String, String> p) {
-        StringBuilder result = new StringBuilder();
-        if (p == null){
-            return result.toString();
-        }
-        for (Map.Entry<String, String> kv : p.entrySet()) {
-            if (kv.getKey() == null || kv.getValue() == null){
-                continue;
+        int [] arr= new int[] {9,1,4,3,7,4,8,5};
+ 
+        boolean s = false;
+        int max;
+        while(!s) {
+            s = true;
+            for (int i = 0; i < arr.length-1; i++) {
+                if(arr[i] > arr[i+1]){
+                    s = false;
+                    max = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = max;
+                }
             }
-            result.append(kv.getKey()).append(" = ").append(kv.getValue()).append(" and ");
         }
-        if (result.length() > 5){
-            result.delete(result.length() - 5, result.length());
-        }
-        return result.toString();
+        System.out.println(Arrays.toString(arr));
     }
 }
